@@ -20,6 +20,10 @@ class AuditlogServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__.'/../config/auditlog.php', 'auditlog');
 
+        $this->publishes([
+            __DIR__.'/../views/audit/index.blade.php' => resource_path('views/audit/index.blade.php'),
+        ], 'views');
+
         if (! class_exists('CreateAuditlogTable')) {
             $timestamp = date('Y_m_d_His', time());
 
